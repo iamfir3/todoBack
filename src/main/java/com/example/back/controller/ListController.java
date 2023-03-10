@@ -32,7 +32,7 @@ public class ListController {
 
         try {
             List<ListDto> lists = listService.getAll(page, limit);
-            if (lists.size() > 1) {
+            if (lists.size() > 0) {
                 returnValue.setListCount(lists.get(0).getTotalList());
             } else {
                 returnValue.setListCount(0);
