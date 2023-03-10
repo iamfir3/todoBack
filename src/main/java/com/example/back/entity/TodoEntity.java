@@ -1,8 +1,12 @@
 package com.example.back.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
+import java.util.Date;
+
 
 @Entity(name="Todo")
 public class TodoEntity implements Serializable {
@@ -42,8 +46,31 @@ public class TodoEntity implements Serializable {
     @Column(nullable = false)
     private Integer isDone=0;
 
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
 
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modify_date")
+    private Date modifyDate;
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
             @JoinColumn(name="listId",referencedColumnName = "listId",nullable = false)

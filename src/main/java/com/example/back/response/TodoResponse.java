@@ -1,11 +1,32 @@
 package com.example.back.response;
 
+import java.sql.Date;
+
 public class TodoResponse {
     private Integer todoId;
     private String content;
     private Integer isDone;
     private String Message;
     private String statusCode;
+
+    private Date createDate;
+    private Date modifyDate;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
 
     public String getMessage() {
         return Message;
