@@ -1,6 +1,7 @@
 package com.example.back.response;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 public class TodoResponse {
     private Integer todoId;

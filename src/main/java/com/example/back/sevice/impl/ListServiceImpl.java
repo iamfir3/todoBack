@@ -70,6 +70,7 @@ public class ListServiceImpl implements ListService {
         if (listEntity.isPresent()) {
             listEntity.get().setListName(listName);
             ListEntity storedListEntity = listRepository.save(listEntity.get());
+
             BeanUtils.copyProperties(storedListEntity, returnValue);
         } else throw new Exception(ErrorMessage.MISSING_REQUIRED_FIELD.getErrorMessage());
         return returnValue;

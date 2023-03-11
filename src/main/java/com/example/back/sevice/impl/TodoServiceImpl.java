@@ -73,6 +73,7 @@ public class TodoServiceImpl implements TodoService {
         todoEntity.get().setContent(todo.getContent());
         todoEntity.get().setDone(todo.getDone());
         TodoEntity savedEntity = todoRepository.save(todoEntity.get());
+        System.out.println(savedEntity.getModifyDate());
         BeanUtils.copyProperties(savedEntity, returnValue);
 
         return returnValue;
