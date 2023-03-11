@@ -27,7 +27,7 @@ public class TodoController {
 
         if(listId==null) throw new Exception(ErrorMessage.MISSING_LIST_ID.getErrorMessage());
         List<TodoDto> todos= todoService.findAllById(listId,page,limit);
-        if(todos.size()>1){
+        if(todos.size()>0){
             returnValue.setTodoCount(todos.get(0).getTodocount());
         }
         else returnValue.setTodoCount(0);
