@@ -62,6 +62,11 @@ public class TodoController {
     @PutMapping
     public TodoResponse updateTodo(@RequestBody TodoRequestModel todoDetails) {
         TodoResponse returnValue = new TodoResponse();
+        if(todoDetails.getContent()==""){
+            returnValue.setMessage(ErrorMessage.INVALID_INPUT.getErrorMessage());
+            returnValue.setStatusCode("1");
+            return returnValue;
+        }
         TodoDto todoDto = new TodoDto();
         BeanUtils.copyProperties(todoDetails, todoDto);
         TodoDto updatedTodo = todoService.updateTodo(todoDto);
