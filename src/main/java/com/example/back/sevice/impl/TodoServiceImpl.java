@@ -50,6 +50,7 @@ public class TodoServiceImpl implements TodoService {
         Pageable pageableRequest = PageRequest.of(page, limit);
         Optional<ListEntity> listEntity=listRepository.findById(listId);
         Page<TodoEntity> todos=todoRepository.findAllByListEntity(listEntity.get(),pageableRequest);
+
         for (TodoEntity todo : todos) {
             if (todo.getListEntity().getListId() - listId == 0) {
                 TodoDto todoModel = new TodoDto();
